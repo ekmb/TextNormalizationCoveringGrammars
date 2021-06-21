@@ -48,7 +48,7 @@ percent = "%" : "@@PERCENT@@";
 # NB: Do not change the formatting here. NO_EDIT must be on the same
 # line as the path.
 rfile = 
-  'universal/roman_numerals_caps.tsv' # NO_EDIT
+  'universal/roman_numerals.tsv' # NO_EDIT
 ;
 
 roman = StringFile[rfile];
@@ -117,7 +117,7 @@ cat_additional_readings =
   ("@" : "@@AT@@")
 ;
 
-numbers_plus = (cat_dot_number
+numbers_plus = Optimize[cat_dot_number
  | cat_slash_number
  | cat_dash_number
  | cat_signed_number
@@ -126,7 +126,7 @@ numbers_plus = (cat_dot_number
  | cat_math_operations
  | cat_roman
  | cat_number_number
- | cat_additional_readings)
-;
+ | cat_additional_readings
+];
 
 export NUMBERS_PLUS = Optimize[numbers_plus @ l.LEXICAL_MAP];

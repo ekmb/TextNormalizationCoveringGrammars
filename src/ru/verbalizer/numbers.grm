@@ -40,6 +40,10 @@ func D[expr] {
 # Since we know this is the default for Russian, it's fair game to set it.
 separators = t.dot_thousands | t.no_delimiter;
 
+export CARDINAL_DEFAULT = Optimize[
+   cardinal
+];
+
 export CARDINAL_NUMBERS = Optimize[
    separators
  @ cardinal
