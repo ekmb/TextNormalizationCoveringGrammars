@@ -23,6 +23,6 @@ try:
 except:
     print('grammar for other language is not found')
 
-print("трехсот трех" in rewrite.rewrites("303", ru_final_fst))
-import pdb; pdb.set_trace()
-print()
+for v in rewrite.rewrites("1000", ru_final_fst):
+    if "тысяч" in v:
+        print(v)

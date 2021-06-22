@@ -14,8 +14,9 @@
 
 import 'util/byte.grm' as b;
 import 'ru/verbalizer/numbers.grm' as n;
+import 'ru/verbalizer/lexical_map.grm' as l;
 
-digit = b.kDigit @ n.CARDINAL_NUMBERS | ("0" : "@@OTHER_ZERO_VERBALIZATIONS@@");
+digit = b.kDigit @ n.CARDINAL_NUMBERS | (("0" : "@@OTHER_ZERO_VERBALIZATIONS@@") @ l.LEXICAL_MAP);
 
 export DIGITS  = digit (n.I[" "] digit)*;
 

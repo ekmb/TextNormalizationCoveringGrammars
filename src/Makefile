@@ -74,7 +74,7 @@ ru/verbalizer/verbalizer.far: ru/verbalizer/verbalizer.grm util/util.far ru/verb
 ru/verbalizer/number_names.far: ru/verbalizer/number_names.grm ru/verbalizer/cardinals.tsv ru/verbalizer/g.fst ru/verbalizer/ordinals.tsv util/arithmetic.far
 	thraxcompiler --input_grammar=$< --output_far=$@
 
-ru/verbalizer/extra_numbers.far: ru/verbalizer/extra_numbers.grm util/byte.far ru/verbalizer/numbers.far
+ru/verbalizer/extra_numbers.far: ru/verbalizer/extra_numbers.grm util/byte.far ru/verbalizer/lexical_map.far ru/verbalizer/numbers.far
 	thraxcompiler --input_grammar=$< --output_far=$@
 
 ru/verbalizer/numbers.far: ru/verbalizer/numbers.grm util/byte.far universal/thousands_punct.far ru/verbalizer/nominatives.tsv ru/verbalizer/number_names.far
