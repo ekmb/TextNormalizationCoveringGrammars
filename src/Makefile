@@ -26,7 +26,7 @@ en/verbalizer/verbalizer.far: en/verbalizer/verbalizer.grm util/util.far en/verb
 en/verbalizer/number_names.far: en/verbalizer/number_names.grm en/verbalizer/cardinals.tsv en/verbalizer/g.fst en/verbalizer/ordinals.tsv util/arithmetic.far
 	thraxcompiler --input_grammar=$< --output_far=$@
 
-en/verbalizer/extra_numbers.far: en/verbalizer/extra_numbers.grm util/byte.far en/verbalizer/numbers.far
+en/verbalizer/extra_numbers.far: en/verbalizer/extra_numbers.grm util/byte.far en/verbalizer/numbers.far en/verbalizer/lexical_map.far
 	thraxcompiler --input_grammar=$< --output_far=$@
 
 en/verbalizer/numbers.far: en/verbalizer/numbers.grm en/verbalizer/number_names.far util/byte.far universal/thousands_punct.far
