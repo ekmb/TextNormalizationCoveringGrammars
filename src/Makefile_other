@@ -1,0 +1,37 @@
+LANG=other
+
+all: ${LANG}/verbalizer/numbers.far
+
+# Language-universal definitions.
+
+universal/thousands_punct.far: universal/thousands_punct.grm /util/byte.far util/util.far
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+util/util.far: util/util.grm util/byte.far util/case.far
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+util/byte.far: util/byte.grm
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+util/case.far: util/case.grm util/byte.far
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+util/arithmetic.far: util/arithmetic.grm util/germanic.tsv util/byte.far
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+# verbalizer.
+
+${LANG}/classifier/cyrillic.far: ${LANG}/classifier/cyrillic.grm
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+${LANG}/verbalizer/number_names.far: ${LANG}/verbalizer/number_names.grm ${LANG}/verbalizer/cardinals.tsv ${LANG}/verbalizer/ordinals.tsv util/arithmetic.far
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+${LANG}/verbalizer/numbers.far: ${LANG}/verbalizer/numbers.grm ${LANG}/verbalizer/number_names.far
+	thraxcompiler --input_grammar=$< --output_far=$@
+
+
+# Cleanup.
+
+clean:
+	$(RM) */*.far */*/*.far
