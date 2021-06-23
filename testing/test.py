@@ -19,10 +19,11 @@ print('RU:', rewrite.top_rewrite(example['itn'], invert))
 
 try:
     other_numbers_fst = pynini.Far(f'{grammar_dir}/other/verbalizer/numbers.far', mode='r')['CARDINAL_DEFAULT']
-    print('Other:', rewrite.top_rewrite(example['itn'], other_numbers_fst.invert().optimize()))
+    other_invert = other_numbers_fst.invert()
+    print('Other:', rewrite.rewrites("zwei tausend", other_invert))
+    print('Other:', rewrite.rewrites("eins hundert", other_invert))
 except:
     print('grammar for other language is not found')
 
-print(rewrite.top_rewrite("303", invert))
-import pdb; pdb.set_trace()
+print(rewrite.rewrites("миллион двести пятьдесят восемь тысяч", invert))
 print()

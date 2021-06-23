@@ -27,9 +27,9 @@ import 'util/arithmetic.grm' as a;
 
 d = a.DELTA_STAR;
 f = a.IARITHMETIC_RESTRICTED;
-g = LoadFst['ru/verbalizer/g.fst'];
+g = LoadFst['en/verbalizer/g.fst'];
 fg = Optimize[d @ Optimize[f @ Optimize[f @ Optimize[f @ g]]]];
-test1 = AssertEqual["230" @ fg, "(+ 200 30 +)"];
+test1 = AssertEqual["230" @ fg, "(+ (* 2 100 *) 30 +)"];
 
 # Compiles lexicon transducers (L).
 
